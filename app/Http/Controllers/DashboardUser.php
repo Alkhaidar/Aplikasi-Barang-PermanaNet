@@ -15,11 +15,11 @@ class DashboardUser extends Controller
      */
     public function index()
     {
-        
+
         return view('dashboard.user.index', [
             'users' => User::latest()->get()
         ]);
-        
+
     }
 
     /**
@@ -43,7 +43,8 @@ class DashboardUser extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
-            'jk' => 'required',
+            'password' => 'required',
+            'jeniskelamin' => 'required',
             'nohp' => 'required',
             'jabatan' => 'required|max:255'
 
@@ -89,7 +90,7 @@ class DashboardUser extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
-            'jk' => 'required',
+            'jeniskelamin' => 'required',
             'nohp' => 'required',
             'jabatan' => 'required|max:255'
 

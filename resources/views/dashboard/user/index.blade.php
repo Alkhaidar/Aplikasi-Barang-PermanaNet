@@ -44,11 +44,11 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->jk}}</td>
+                            <td>{{$user->jeniskelamin}}</td>
                             <td>{{$user->nohp}}</td>
                             <td>{{$user->jabatan}}</td>
                             <td>
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus{{ $loop->iteration }}">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>

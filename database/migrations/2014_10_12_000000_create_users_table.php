@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('jeniskelamin');
             $table->string('nohp');
-            $table->string('Jabatan');
+            $table->string('jabatan');
             $table->timestamps();
         });
     }
