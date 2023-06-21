@@ -18,7 +18,8 @@ class DashboardBarangMasuk extends Controller
     {
 
         return view('dashboard.barangmasuk.index', [
-            'barangmasuks' => BarangMasuk::with('barang')->latest()->get()
+            'barangmasuks' => BarangMasuk::with('barang')->latest()->get(),
+            'title' => "Barang Masuk"
         ]);
 
     }
@@ -31,7 +32,8 @@ class DashboardBarangMasuk extends Controller
     public function create()
     {
         return view('dashboard.barangmasuk.create', [
-            'barangs' => Barang::all()
+            'barangs' => Barang::all(),
+            'title' => "Barang Masuk"
         ]);
     }
 
@@ -79,7 +81,8 @@ class DashboardBarangMasuk extends Controller
     {
         return view('dashboard.barangmasuk.edit', [
             'barangmasuks' => $barangmasuk,
-            'barangs' => Barang::all()
+            'barangs' => Barang::all(),
+            'title' => "Barang Masuk"
         ]);
     }
 

@@ -14,9 +14,10 @@ class DashboardBarang extends Controller
      */
     public function index()
     {
-        
+
         return view('dashboard.barang.index', [
-            'barangs' => Barang::latest()->get()
+            'barangs' => Barang::latest()->get(),
+            'title' => "Barang"
         ]);
     }
 
@@ -27,7 +28,9 @@ class DashboardBarang extends Controller
      */
     public function create()
     {
-        return view('dashboard.barang.create');
+        return view('dashboard.barang.create', [
+            'title' => "Barang"
+        ]);
     }
 
     /**
@@ -67,7 +70,8 @@ class DashboardBarang extends Controller
     public function edit(Barang $barang)
     {
         return view('dashboard.barang.edit', [
-            'barangs' => $barang
+            'barangs' => $barang,
+            'title' => "Barang"
         ]);
     }
 

@@ -17,7 +17,8 @@ class DashboardUser extends Controller
     {
 
         return view('dashboard.user.index', [
-            'users' => User::latest()->get()
+            'users' => User::latest()->get(),
+            'title' => "User"
         ]);
 
     }
@@ -29,7 +30,9 @@ class DashboardUser extends Controller
      */
     public function create()
     {
-        return view('dashboard.user.create');
+        return view('dashboard.user.create', [
+            'title' => "User"
+        ]);
     }
 
     /**
@@ -74,7 +77,8 @@ class DashboardUser extends Controller
     public function edit(User $user)
     {
         return view('dashboard.user.edit', [
-            'users' => $user
+            'users' => $user,
+            'title' => "User"
         ]);
     }
 
