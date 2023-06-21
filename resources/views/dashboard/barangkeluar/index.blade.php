@@ -38,15 +38,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($barangmasuks as $barangmasuk)
+                        @foreach($barangkeluars as $barangkeluar)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$barangmasuk->name}}</td>
-                            <td>{{$barangmasuk->tanggalmasuk}}</td>
-                            <td>{{$barangmasuk->stok}}</td>
-                            <td>{{$barangmasuk->keterangan}}</td>
+                            <td>{{$barangkeluar->barang->name}}</td>
+                            <td>{{$barangkeluar->date}}</td>
+                            <td>{{$barangkeluar->stok}}</td>
+                            <td>{{$barangkeluar->keterangan}}</td>
                             <td>
-                                <a href="{{ route('barangmasuks.edit', $barangmasuk->id) }}" class="btn btn-sm btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="{{ route('barangkeluar.edit', $barangkeluar->id) }}" class="btn btn-sm btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus{{ $loop->iteration }}">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
@@ -61,11 +61,12 @@
                                         <h5 class="modal-title" id="exampleModalLabel">Hapus Barang</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="{{ route('barangmasuk.destroy', $barangmasuk->id) }}" method="post">
+                                    <form action="{{ route('barangkeluar.destroy', $barangkeluar->id) }}" method="post">
                                         @method('delete')
                                         @csrf
+                                        <input type="hidden" name="id_barang" value="{{ $barangkeluar->id_barang }}">
                                         <div class="modal-body">
-                                            <p class="fs-6">Apakah anda yakin akan menghapus <b>{{ $barangmasuk->name }}</b> dari Barang Masuk?</p>
+                                            <p class="fs-6">Apakah anda yakin akan menghapus <b>{{ $barangkeluar->barang->name }}</b> dari Barang Masuk?</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

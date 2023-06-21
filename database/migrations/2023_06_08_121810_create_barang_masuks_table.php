@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('id_barang')->constrained('barangs')->onUpdate('cascade')->onDelete('restrict');
             $table->date('date');
             $table->integer('stok');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

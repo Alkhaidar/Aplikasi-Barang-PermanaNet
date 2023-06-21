@@ -1,5 +1,6 @@
 @extends('dashboard.layout.main')
 @section('conten')
+
 <div class="row">
 <div class="col">
       @if (session()->has('success'))
@@ -41,12 +42,12 @@
                         @foreach($barangmasuks as $barangmasuk)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$barangmasuk->name}}</td>
-                            <td>{{$barangmasuk->tanggalmasuk}}</td>
+                            <td>{{$barangmasuk->barang->name}}</td>
+                            <td>{{$barangmasuk->date}}</td>
                             <td>{{$barangmasuk->stok}}</td>
                             <td>{{$barangmasuk->keterangan}}</td>
                             <td>
-                                <a href="{{ route('barangmasuks.edit', $barangmasuk->id) }}" class="btn btn-sm btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="{{ route('barangmasuk.edit', $barangmasuk->id) }}" class="btn btn-sm btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus{{ $loop->iteration }}">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
@@ -64,8 +65,9 @@
                                     <form action="{{ route('barangmasuk.destroy', $barangmasuk->id) }}" method="post">
                                         @method('delete')
                                         @csrf
+                                        <input type="hidden" name="id_barang" value="{{ $barangmasuk->id_barang }}">
                                         <div class="modal-body">
-                                            <p class="fs-6">Apakah anda yakin akan menghapus <b>{{ $barangmasuk->name }}</b> dari Barang Masuk?</p>
+                                            <p class="fs-6">Apakah anda yakin akan menghapus <b>{{ $barangmasuk->barang->name }}</b> dari Barang Masuk?</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

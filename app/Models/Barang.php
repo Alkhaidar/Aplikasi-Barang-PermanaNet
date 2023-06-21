@@ -8,21 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Barang extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
     
-    protected $guarden = ['id'];
-    protected $fillable = [
-        'name',
-        'stok'
-    ];
 
     function BarangMasuk ()
     {
-    return $this->hasOne(BarangMasuk::class);
+        return $this->hasMany(BarangMasuk::class);
     }
 
     function BarangKeluar ()
     {
-    return $this->hasOne(BarangKeluar::class);
+        return $this->hasMany(BarangKeluar::class);
     }
 }
 

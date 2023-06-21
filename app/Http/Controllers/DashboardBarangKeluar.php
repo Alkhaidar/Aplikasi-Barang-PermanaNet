@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\BarangKeluar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardBarangKeluar extends Controller
 {
@@ -14,11 +16,11 @@ class DashboardBarangKeluar extends Controller
      */
     public function index()
     {
-        
+
         return view('dashboard.barangkeluar.index', [
-            'barangkeluars' => BarangKeluar::latest()->get()
+            'barangkeluars' => BarangKeluar::with('barang')->latest()->get()
         ]);
-        
+
     }
 
     /**
@@ -28,7 +30,9 @@ class DashboardBarangKeluar extends Controller
      */
     public function create()
     {
-        return view('dashboard.barangkeluar.create');
+        return view('dashboard.barangkeluar.create', [
+            'barangs' => Barang::all()
+        ]);
     }
 
     /**
@@ -40,15 +44,18 @@ class DashboardBarangKeluar extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'tanggalkeluar' => 'required',
+            'id_barang' => 'required|max:255',
+            'date' => 'required',
             'stok' => 'required',
             'keterangan' => 'required|max:255'
 
         ]);
 
+        $stok = DB::table('barangs')->where('id', $request->id_barang)->value('stok');
+        Barang::where('id', $request->id_barang)->update(['stok' => ($stok - $request->stok)]);
+
         BarangKeluar::create($validatedData);
-        return redirect('/barangkeluar')->with('success', 'Barang Keluar Berhasil Ditambahkan!');
+        return redirect('/barangkeluar')->with('success', 'Barang Keluar berhasil ditambahkan!');
     }
 
     /**
@@ -71,7 +78,8 @@ class DashboardBarangKeluar extends Controller
     public function edit(BarangKeluar $barangkeluar)
     {
         return view('dashboard.barangkeluar.edit', [
-            'barangkeluars' => $barangkeluar
+            'barangkeluars' => $barangkeluar,
+            'barangs' => Barang::all()
         ]);
     }
 
@@ -85,12 +93,20 @@ class DashboardBarangKeluar extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'tanggalkeluar' => 'required',
+            'id_barang' => 'required|max:255',
+            'date' => 'required',
             'stok' => 'required',
             'keterangan' => 'required|max:255'
 
         ]);
+
+        $stokbarang = DB::table('barangs')->where('id', $request->id_barang)->value('stok');
+        $stokbarangkeluar = DB::table('barang_keluars')->where('id', $id)->value('stok');
+
+        Barang::where('id', $request->id_barang)->update(['stok' => ($stokbarang + $stokbarangkeluar)]);
+
+        $stok = DB::table('barangs')->where('id', $request->id_barang)->value('stok');
+        Barang::where('id', $request->id_barang)->update(['stok' => ($stok - $request->stok)]);
 
         BarangKeluar::where('id', $id)->update($validatedData);
         return redirect('/barangkeluar')->with('success', 'Barang Keluar berhasil diupdate!');
@@ -102,9 +118,14 @@ class DashboardBarangKeluar extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        $stokbarang = DB::table('barangs')->where('id', $request->id_barang)->value('stok');
+        $stokbarangkeluar = DB::table('barang_keluars')->where('id', $id)->value('stok');
+
+        Barang::where('id', $request->id_barang)->update(['stok' => ($stokbarang + $stokbarangkeluar)]);
+
         BarangKeluar::destroy($id);
-        return redirect('/barangkeluar')->with('success', 'Barang Keluar Berhasil Dihapus!');
+        return redirect('/barangkeluar')->with('success', 'Barang Keluar berhasil dihapus!');
     }
 }

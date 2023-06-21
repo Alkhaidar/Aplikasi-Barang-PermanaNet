@@ -9,17 +9,11 @@ class BarangKeluar extends Model
 {
     use HasFactory;
 
-    protected $guarden = ['id'];
-    protected $fillable = [
-        'name',
-        'tanggalkeluar',
-        'stok',
-        'keterangan'
+    protected $guarded = ['id'];
 
-    ];
 
-    function barangmasuks (){
-      
-        return $this->belongTo(BarangKeluar::class, 'id_barang');
-        }
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'id_barang');
+    }
 }

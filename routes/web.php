@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardBarang;
+use App\Http\Controllers\DashboardBarangKeluar;
 use App\Http\Controllers\DashboardBarangMasuk;
 use App\Http\Controllers\DashboardUser;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ Route::resource('/barang', DashboardBarang::class);
 
 Route::resource('/barangmasuk', DashboardBarangMasuk::class);
 
-Route::resource('/barangkeluar', DashboardBarangMasuk::class);
+Route::resource('/barangkeluar', DashboardBarangKeluar::class);
 
 Route::resource('/user', DashboardUser::class);
 

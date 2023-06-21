@@ -6,21 +6,24 @@
         <div class="card-body">
             <form action="{{ route('barangkeluar.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="mb-3 row">
-                    <label for="name" class="col-sm-2 col-form-label">Nama Barang</label>
+                <div class="mb-3 me-2 row ">
+                    <label for="id_barang" class="col-sm-2 col-form-label">Nama Barang</label>
                     <div class="">
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
-                        @error('name')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
+                        <select class="form-select" name="id_barang" id="id_barang">
+                            @foreach ($barangs as $barang)
+                              @if (old('id_barang') == $barang->id)
+                                <option value="{{ $barang->id }}" selected>{{ $barang->name }}</option>
+                              @else
+                                <option value="{{ $barang->id }}">{{ $barang->name }}</option>
+                              @endif
+                            @endforeach
+                          </select>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="tanggalmasuk" class="col-sm-2 col-form-label">Tanggal Keluar</label>
+                    <label for="date" class="col-sm-2 col-form-label">Tanggal Keluar</label>
                     <div class="">
-                        <input type="date" class="form-control @error('tanggalmasuk') is-invalid @enderror" id="tanggalmasuk" name="tanggalmasuk" value="{{ old('tanggalmasuk') }}">
+                        <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ old('date') }}">
                         @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
