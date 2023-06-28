@@ -12,4 +12,4 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
 }
- // method untuk menampilkan view form tambah pegawai
+ 

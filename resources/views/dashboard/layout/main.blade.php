@@ -26,6 +26,7 @@
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    
     <!-- Nucleo Icons -->
     <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -39,6 +40,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Z/4B7n8tKgELryAghVlgvcwGx59Kzv7+1U9K58f+K+kHYM0s9t5+zkNlg6pQbTuhqczhVWv/nz/fc2Xl/N8C5Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 
 
 </head>
@@ -79,20 +83,21 @@
     <!-- Data Tables JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
 
     <!-- Scrips Data Tables -->
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable({
                 // "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
-                "scrollX": true,
+                "scrollX": false,
                 "language": {
                     "search": "",
                     "searchPlaceholder": "Search...",
@@ -102,17 +107,42 @@
             });
             $('#myTable1').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'excel', 'pdf', 'print'
+                buttons: [{
+                        extend: 'excel',
+                        className: 'btn btn-primary',
+                        text: '<i class="fas fa-file-excel"></i> Export Excel'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'btn btn-danger',
+                        text: '<i class="fas fa-file-pdf"></i> Export PDF'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'btn btn-success',
+                        text: '<i class="fas fa-print"></i> Print'
+                    }
                 ]
             });
             $('#myTable2').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'excel', 'pdf', 'print'
+                buttons: [{
+                        extend: 'excel',
+                        className: 'btn btn-primary',
+                        text: '<i class="fas fa-file-excel"></i> Export Excel'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'btn btn-danger',
+                        text: '<i class="fas fa-file-pdf"></i> Export PDF'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'btn btn-success',
+                        text: '<i class="fas fa-print"></i> Print'
+                    }
                 ]
             });
-
             $(document).ready(function() {
                 $('.dataTables_filter input[type="search"]').css({
                     "marginBottom": "10px"

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardUser extends Controller
 {
@@ -18,7 +19,7 @@ class DashboardUser extends Controller
 
         return view('dashboard.user.index', [
             'users' => User::latest()->get(),
-            'title' => "User"
+            'title' => "User",
         ]);
 
     }
@@ -50,11 +51,12 @@ class DashboardUser extends Controller
             'jeniskelamin' => 'required',
             'nohp' => 'required',
             'jabatan' => 'required|max:255'
-
+        
         ]);
-
+        $validatedData['password'] = Hash::make($validatedData['password']);
         User::create($validatedData);
         return redirect('/user')->with('success', 'User Berhasil Ditambahkan!');
+        
     }
 
     /**
@@ -97,7 +99,6 @@ class DashboardUser extends Controller
             'jeniskelamin' => 'required',
             'nohp' => 'required',
             'jabatan' => 'required|max:255'
-
         ]);
 
         User::where('id', $id)->update($validatedData);

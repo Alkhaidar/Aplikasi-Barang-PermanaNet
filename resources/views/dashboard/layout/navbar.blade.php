@@ -7,18 +7,24 @@
             </ol>
             <h6 class="font-weight-bolder text-white mb-0">{{ $title }}</h6>
         </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Al Khaidar</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <style>
+  .times-roman {
+    font-family: 'Times New Roman', Times, serif;
+  }
+</style>
 
-        </div>
+<!-- <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+    <ul class="navbar-nav justify-content-end">
+      <li class="nav-item d-flex align-items-center">
+        <a href="javascript:;" class="nav-link text-white font-weight-bold px-0 times-roman">
+          <i class="fas fa-user me-sm-2"></i>
+          <span class="d-sm-inline d-none">Al-Khaidar</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div> -->
+
     </div>
 </nav>

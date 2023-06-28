@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="jeniskelamin" class="col-sm-2 col-form-label">jenis Kelamin</label>
+                    <label for="jeniskelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                     <div class="">
                         <select class="form-select" name="jeniskelamin" id="jeniskelamin">
                             <option value="Laki-Laki">Laki-Laki</option>

@@ -20,6 +20,7 @@ class DashboardBarang extends Controller
             'title' => "Barang"
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -41,11 +42,12 @@ class DashboardBarang extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'stok' => 'required'
         ]);
-
+        
         Barang::create($validatedData);
         return redirect('/barang')->with('success', 'Barang baru berhasil ditambahkan!');
     }

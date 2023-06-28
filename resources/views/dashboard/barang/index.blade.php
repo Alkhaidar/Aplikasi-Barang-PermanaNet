@@ -26,7 +26,7 @@
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <table id="myTable" class="table responsive nowrap table-bordered table-striped align-middle" style="width:100%">
+                <table id="myTable" class="table responsive nowrap table-bordered table-striped align-middle "  style="width:100%">
                     <thead>
                         <tr>
                             <th>Id Barang</th>

@@ -10,7 +10,7 @@
                 <div class="mb-3 row">
                     <label for="name" class="col-sm-2 col-form-label">Nama Barang</label>
                     <div class="">
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $barangkeluars->name) }}">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $barangs->name) }}">
                         @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
